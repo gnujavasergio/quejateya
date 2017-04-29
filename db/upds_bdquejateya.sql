@@ -34,7 +34,7 @@ CREATE TABLE `cities` (
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   `user_created` int(11) NOT NULL,
-  `user_modified` int(11) NOT NULL,
+  `user_modified` int(11) DEFAULT NULL,
   `country_id` int(11) NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -52,7 +52,7 @@ CREATE TABLE `comments` (
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   `user_created` int(11) NOT NULL,
-  `user_modified` int(11) NOT NULL,
+  `user_modified` int(11) DEFAULT NULL,
   PRIMARY KEY(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -152,7 +152,7 @@ CREATE TABLE `valuations` (
   `created` datetime NOT NULL,
   `modified` datetime DEFAULT NULL,
   `user_created` int(11) NOT NULL,
-  `user_modified` int(11) NOT NULL,
+  `user_modified` int(11) DEFAULT NULL,
   PRIMARY KEY(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

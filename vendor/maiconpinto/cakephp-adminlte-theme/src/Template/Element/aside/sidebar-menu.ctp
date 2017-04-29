@@ -8,6 +8,18 @@ if (file_exists($file)) {
 } else {
 ?>
 <ul class="sidebar-menu">
+    <li class="header"><?php echo __('CONFIGURACIÓN'); ?></li>
+    <li><a href="<?php echo $this->Url->build('/countries'); ?>"><i class="fa fa-cube"></i> <span><?= __('Paises') ?></span></a></li>
+    <li><a href="<?php echo $this->Url->build('/cities'); ?>"><i class="fa fa-cubes"></i> <span><?= __('Ciudades') ?></span></a></li>
+    <li><a href="<?php echo $this->Url->build('/categories'); ?>"><i class="fa fa-sitemap"></i> <span><?= __('Categorías') ?></span></a></li>
+    <li><a href="<?php echo $this->Url->build('/etiquetas'); ?>"><i class="fa fa-tags"></i> <span><?= __('Etiquetas') ?></span></a></li>
+    <li><a href="<?php echo $this->Url->build('/priorities'); ?>"><i class="fa fa-tasks"></i> <span><?= __('Prioridades') ?></span></a></li>
+    <li><a href="<?php echo $this->Url->build('/valuations'); ?>"><i class="fa fa-thumbs-up"></i> <span><?= __('Valoraciones') ?></span></a></li>
+    <li class="header"><?php echo __('QUEJAS'); ?></li>
+    <li><a href="<?php echo $this->Url->build('/posts'); ?>"><i class="fa fa-microphone"></i> <span><?= __('Publicaciones') ?></span></a></li>
+    <li><a href="<?php echo $this->Url->build('/comments'); ?>"><i class="fa fa-comments"></i> <span><?= __('Comentarios') ?></span></a></li>
+    
+    
     <li class="header">MAIN NAVIGATION</li>
     <li class="treeview">
         <a href="#">
