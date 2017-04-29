@@ -30,7 +30,7 @@
                                 <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
                                 <th><?= $this->Paginator->sort('code', 'Código') ?></th>
                                 <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
-                                <th class="actions" style="width: 150px"><?= __('Acciones') ?></th>
+                                <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,10 +40,10 @@
                                 <td><?= h($country->name) ?></td>
                                 <td><?= h($country->code) ?></td>
                                 <td><?= ($country->published)?__('Si'):__('No') ?></td>
-                                <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['action' => 'view', $country->id]) ?>
-                                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $country->id]) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $country->id], ['confirm' => __('Are you sure you want to delete # {0}?', $country->id)]) ?>
+                                <td class="actions text-right">
+                                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $country->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
+                                    <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $country->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
+                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $country->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre {0}?', $country->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
