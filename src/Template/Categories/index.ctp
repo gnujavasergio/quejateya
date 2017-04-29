@@ -17,7 +17,8 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Listado de categorias</h3>
+                    <h3 class="box-title">Listado de categorias</h3>                                   
+                     
                 </div>
                 <div class="box-body no-padding">
                     <table class="table table-striped ">
@@ -35,11 +36,12 @@
                             <tr>
                                 <td><?= $this->Number->format($category->id) ?></td>
                                 <td><?= h($category->name) ?></td>
-                                <td><?= h($category->code) ?></td>
+                                <td><?= h($category->hashtag) ?></td>
+                                <td><?= h($published->published) ?></td>
                                 <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['action' => 'view', $country->id]) ?>
-                                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $country->id]) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $country->id], ['confirm' => __('Are you sure you want to delete # {0}?', $country->id)]) ?>
+                                    <?= $this->Html->link(__('View'), ['action' => 'view', $category->id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $category->id]) ?>
+                                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
