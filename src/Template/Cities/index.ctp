@@ -18,7 +18,7 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Listado de Ciudades</h3>
-                      <div class="pull-right">
+                    <div class="pull-right">
                         <a href="<?php echo $this->Url->build('/cities/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nuevo') ?></a>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                                 <th style="width: 50px">#</th>
                                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                                 <th><?= $this->Paginator->sort('code', 'Código') ?></th>
-                              <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
+                                <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
                                 <th class="actions" style="width: 150px"><?= __('Acciones') ?></th>
                             </tr>
                         </thead> 
@@ -39,10 +39,10 @@
                         <td><?= h($city->name) ?></td>
                         <td><?= h($city->code) ?></td>
                         <td><?= ($city->published)?__('Si'):__('No') ?></td>
-                        <td class="actions">
-         <?= $this->Html->link(__('View'), ['action' => 'view', $city->id]) ?>
-         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $city->id]) ?>
-         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $city->id], ['confirm' => __('Are you sure you want to delete # {0}?', $city->id)]) ?>
+                        <td class="actions text-right">
+                                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $city->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
+                                    <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $city->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
+                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $city->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre {0}?', $city->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                         </td>
 
 
