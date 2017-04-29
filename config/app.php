@@ -229,9 +229,9 @@ return [
              * the following line and set the port accordingly
              */
             //'port' => 'non_standard_port_number',
-            'username' => 'my_app',
-            'password' => 'secret',
-            'database' => 'my_app',
+            'username' => 'root',
+            'password' => '5653651',
+            'database' => 'upds_bdquejateya',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],
