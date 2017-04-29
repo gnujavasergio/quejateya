@@ -1,64 +1,62 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New City'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Countries'), ['controller' => 'Countries', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Country'), ['controller' => 'Countries', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="cities index large-9 medium-8 columns content">
-    <h3><?= __('Cities') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('code') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('published') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_modified') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('country_id') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($cities as $city): ?>
-            <tr>
-                <td><?= $this->Number->format($city->id) ?></td>
-                <td><?= h($city->name) ?></td>
-                <td><?= h($city->code) ?></td>
-                <td><?= h($city->published) ?></td>
-                <td><?= h($city->created) ?></td>
-                <td><?= h($city->modified) ?></td>
-                <td><?= $this->Number->format($city->user_created) ?></td>
-                <td><?= $this->Number->format($city->user_modified) ?></td>
-                <td><?= $city->has('country') ? $this->Html->link($city->country->name, ['controller' => 'Countries', 'action' => 'view', $city->country->id]) : '' ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $city->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $city->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $city->id], ['confirm' => __('Are you sure you want to delete # {0}?', $city->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+<section class="content-header">
+    <h1>
+        <?= __('Paises') ?>
+        <small><?= __('Listado') ?></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="<?php echo $this->Url->build('/'); ?>"><i class="fa fa-dashboard"></i> <?= __('Inicio') ?></a></li>
+        <li><?= __('Paises') ?></li>
+        <li class="active"><?= __('Listado') ?></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Listado de Paises</h3>
+                </div>
+                <div class="box-body no-padding">
+                    <table class="table table-striped ">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px">#</th>
+                                <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
+                                <th><?= $this->Paginator->sort('code', 'Código') ?></th>
+                                <th class="actions" style="width: 150px"><?= __('Acciones') ?></th>
+                            </tr>
+                        </thead> 
+                        <tbody>
+             <?php foreach ($cities as $city): ?>
+                        <td><?= $this->Number->format($city->id) ?></td>
+                        <td><?= h($city->name) ?></td>
+                        <td><?= h($city->code) ?></td>
+                        <td class="actions">
+         <?= $this->Html->link(__('View'), ['action' => 'view', $city->id]) ?>
+         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $city->id]) ?>
+         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $city->id], ['confirm' => __('Are you sure you want to delete # {0}?', $city->id)]) ?>
+                        </td>
+
+
+           <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="box box-footer">
+                        <div class="paginator text-center">
+                            <ul class="pagination">
+                            <?= $this->Paginator->first('<< ' . __('Primero')) ?>
+                            <?= $this->Paginator->prev('< ' . __('Anterior')) ?>
+                            <?= $this->Paginator->numbers() ?>
+                            <?= $this->Paginator->next(__('Siguiente') . ' >') ?>
+                            <?= $this->Paginator->last(__('Último') . ' >>') ?>
+                            </ul>
+                            <p class="text-center"><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, mostrando {{current}} registros de un total de {{count}}')]) ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>

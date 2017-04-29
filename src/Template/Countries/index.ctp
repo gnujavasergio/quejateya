@@ -18,14 +18,18 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Listado de Paises</h3>
+                    <div class="pull-right">
+                        <a href="<?php echo $this->Url->build('/countries/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nuevo') ?></a>
+                    </div>
                 </div>
                 <div class="box-body no-padding">
                     <table class="table table-striped ">
                         <thead>
                             <tr>
                                 <th style="width: 50px">#</th>
-                                <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
+                                <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
                                 <th><?= $this->Paginator->sort('code', 'Código') ?></th>
+                                <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
                                 <th class="actions" style="width: 150px"><?= __('Acciones') ?></th>
                             </tr>
                         </thead>
@@ -35,6 +39,7 @@
                                 <td><?= $this->Number->format($country->id) ?></td>
                                 <td><?= h($country->name) ?></td>
                                 <td><?= h($country->code) ?></td>
+                                <td><?= ($country->published)?__('Si'):__('No') ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['action' => 'view', $country->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $country->id]) ?>
