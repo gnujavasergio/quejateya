@@ -19,7 +19,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Listado de Paises</h3>
                     <div class="pull-right">
-                        <a href="<?php echo $this->Url->build('/countries/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nuevo') ?></a>
+                        <a href="<?php echo $this->Url->build('/countries/add'); ?>" class="btn btn-xs btn-success"><i class="fa fa-plus"></i> <?= __('Nuevo') ?></a>
                     </div>
                 </div>
                 <div class="box-body no-padding">
@@ -43,7 +43,7 @@
                                 <td class="actions text-right">
                                     <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $country->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
                                     <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $country->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
-                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $country->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre {0}?', $country->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
+                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $country->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre "{0}"?', $country->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
