@@ -66,6 +66,7 @@ CREATE TABLE `countries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `code` varchar(30) NOT NULL,
+  `published` tinyint(1) DEFAULT '0',
   `created` date NOT NULL,
   `modified` date DEFAULT NULL,
   `user_created` int(11) NOT NULL,

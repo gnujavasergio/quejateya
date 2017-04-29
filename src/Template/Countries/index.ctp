@@ -18,15 +18,19 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Listado de Paises</h3>
+                    <div class="pull-right">
+                        <a href="<?php echo $this->Url->build('/countries/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nuevo') ?></a>
+                    </div>
                 </div>
                 <div class="box-body no-padding">
                     <table class="table table-striped ">
                         <thead>
                             <tr>
                                 <th style="width: 50px">#</th>
-                                <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
+                                <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
                                 <th><?= $this->Paginator->sort('code', 'Código') ?></th>
-                                <th class="actions" style="width: 150px"><?= __('Acciones') ?></th>
+                                <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
+                                <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,10 +39,11 @@
                                 <td><?= $this->Number->format($country->id) ?></td>
                                 <td><?= h($country->name) ?></td>
                                 <td><?= h($country->code) ?></td>
-                                <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['action' => 'view', $country->id]) ?>
-                                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $country->id]) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $country->id], ['confirm' => __('Are you sure you want to delete # {0}?', $country->id)]) ?>
+                                <td><?= ($country->published)?__('Si'):__('No') ?></td>
+                                <td class="actions text-right">
+                                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $country->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
+                                    <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $country->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
+                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $country->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre {0}?', $country->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
