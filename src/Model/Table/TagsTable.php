@@ -59,14 +59,7 @@ class TagsTable extends Table
             ->boolean('published')
             ->allowEmpty('published');
 
-        $validator
-            ->integer('user_created')
-            ->requirePresence('user_created', 'create')
-            ->notEmpty('user_created');
 
-        $validator
-            ->integer('user_modified')
-            ->allowEmpty('user_modified');
 
         return $validator;
     }
