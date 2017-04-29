@@ -18,13 +18,16 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Listado de Paises</h3>
+                    <div class="pull-right">
+                        <a href="<?php echo $this->Url->build('/countries/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nuevo') ?></a>
+                    </div>
                 </div>
                 <div class="box-body no-padding">
                     <table class="table table-striped ">
                         <thead>
                             <tr>
                                 <th style="width: 50px">#</th>
-                                <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
+                                <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
                                 <th><?= $this->Paginator->sort('code', 'Código') ?></th>
                                 <th class="actions" style="width: 150px"><?= __('Acciones') ?></th>
                             </tr>

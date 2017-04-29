@@ -51,12 +51,13 @@ class CountriesController extends AppController
         $country = $this->Countries->newEntity();
         if ($this->request->is('post')) {
             $country = $this->Countries->patchEntity($country, $this->request->getData());
+            $country->user_created = 1;
             if ($this->Countries->save($country)) {
-                $this->Flash->success(__('The country has been saved.'));
+                $this->Flash->success(__('El País ha sido Registrado.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The country could not be saved. Please, try again.'));
+            $this->Flash->error(__('El País no pudo ser registrado. Por favor, inténtelo nuevamente.'));
         }
         $this->set(compact('country'));
         $this->set('_serialize', ['country']);
@@ -76,12 +77,13 @@ class CountriesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $country = $this->Countries->patchEntity($country, $this->request->getData());
+            $country->user_modified = 1;
             if ($this->Countries->save($country)) {
-                $this->Flash->success(__('The country has been saved.'));
+                $this->Flash->success(__('El País ha sido modificado.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The country could not be saved. Please, try again.'));
+            $this->Flash->error(__('El País no pudo modificarse. Por favor, inténtelo nuevamente.'));
         }
         $this->set(compact('country'));
         $this->set('_serialize', ['country']);
@@ -99,9 +101,9 @@ class CountriesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $country = $this->Countries->get($id);
         if ($this->Countries->delete($country)) {
-            $this->Flash->success(__('The country has been deleted.'));
+            $this->Flash->success(__('El Páis ha sido eliminado.'));
         } else {
-            $this->Flash->error(__('The country could not be deleted. Please, try again.'));
+            $this->Flash->error(__('El País no pudo ser eliminado. Por favor, inténtelo nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
