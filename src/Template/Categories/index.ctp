@@ -18,7 +18,9 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Listado de categorias</h3>                                   
-                     
+                     <div class="pull-right">
+                        <a href="<?php echo $this->Url->build('/categories/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nuevo') ?></a>
+                    </div>
                 </div>
                 <div class="box-body no-padding">
                     <table class="table table-striped ">
@@ -28,7 +30,7 @@
                                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                                 <th><?= $this->Paginator->sort('hashtag', 'hashtag') ?></th>
                                 <th><?= $this->Paginator->sort('published', 'publicado') ?></th>
-                                <th class="actions" style="width: 150px"><?= __('Acciones') ?></th>
+                                <th class="actions" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,11 +39,11 @@
                                 <td><?= $this->Number->format($category->id) ?></td>
                                 <td><?= h($category->name) ?></td>
                                 <td><?= h($category->hashtag) ?></td>
-                                <td><?= h($published->published) ?></td>
-                                <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['action' => 'view', $category->id]) ?>
-                                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $category->id]) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?>
+                                <td><?= ($category->published)?__('Si'):__('No') ?></td>
+                                <td class="actions text-right">
+                                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $category->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
+                                    <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $category->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
+                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $category->id], ['confirm' => __('¿Está seguro de eliminar la Categoria con nombre {0}?', $category->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
