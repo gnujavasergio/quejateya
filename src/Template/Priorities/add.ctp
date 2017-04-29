@@ -3,27 +3,17 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Priorities'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="priorities form large-9 medium-8 columns content">
     <?= $this->Form->create($priority) ?>
     <fieldset>
-        <legend><?= __('Add Priority') ?></legend>
+        <legend><?= __('Agregar prioridad') ?></legend>
         <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('level');
-            echo $this->Form->control('color');
-            echo $this->Form->control('published');
-            echo $this->Form->control('user_created');
-            echo $this->Form->control('user_modified');
+            echo $this->Form->control(__('Nombre'));
+            echo $this->Form->control(__('Nivel'));
+            echo $this->Form->control(__('color'));
+            echo $this->Form->control(__('Publicado'));
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Enviar')) ?>
     <?= $this->Form->end() ?>
 </div>
