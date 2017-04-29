@@ -24,8 +24,11 @@
                     <?php
                     echo $this->Form->control('name', ['label' => __('Nombre')]);
                     echo $this->Form->control('code', ['label' => __('Código')]);
-                    echo $this->Form->button(__('Guardar'));
+                    echo $this->Form->control('published', ['label' => __('Publicado')]);
                     ?>
+                </div>
+                <div class="box-footer">
+                    <?php echo $this->Form->button('<i class="fa fa-save"></i> ' . __('Guardar')); ?>
                 </div>
                 <?= $this->Form->end() ?>
             </div>
