@@ -32,6 +32,6 @@
             echo $this->Form->control('country_id', ['options' => $countries]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Guardar')) ?>
     <?= $this->Form->end() ?>
 </div>
