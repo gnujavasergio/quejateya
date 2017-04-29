@@ -52,11 +52,11 @@ class ValuationsController extends AppController
         if ($this->request->is('post')) {
             $valuation = $this->Valuations->patchEntity($valuation, $this->request->getData());
             if ($this->Valuations->save($valuation)) {
-                $this->Flash->success(__('The valuation has been saved.'));
+                $this->Flash->success(__('La Valoracion fue Guardada Satisfactoriamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The valuation could not be saved. Please, try again.'));
+            $this->Flash->error(__('La Valoracion no pudo ser Guardada, INtentelo de nuevo.'));
         }
         $this->set(compact('valuation'));
         $this->set('_serialize', ['valuation']);
@@ -77,11 +77,11 @@ class ValuationsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $valuation = $this->Valuations->patchEntity($valuation, $this->request->getData());
             if ($this->Valuations->save($valuation)) {
-                $this->Flash->success(__('The valuation has been saved.'));
+                $this->Flash->success(__('La Valoracion fue modificada SAtisfactoriamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The valuation could not be saved. Please, try again.'));
+            $this->Flash->error(__('La valoracion no pudo ser Modificada, INtentelo de NuEVO.'));
         }
         $this->set(compact('valuation'));
         $this->set('_serialize', ['valuation']);
@@ -99,9 +99,9 @@ class ValuationsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $valuation = $this->Valuations->get($id);
         if ($this->Valuations->delete($valuation)) {
-            $this->Flash->success(__('The valuation has been deleted.'));
+            $this->Flash->success(__('Valoracion eliminada.'));
         } else {
-            $this->Flash->error(__('The valuation could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La valoracion no pudo ser eliminada, intentelo mas tarde.'));
         }
 
         return $this->redirect(['action' => 'index']);
