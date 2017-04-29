@@ -7,12 +7,14 @@
     <?= $this->Form->create($priority) ?>
     <fieldset>
         <legend><?= __('Agregar prioridad') ?></legend>
+        <div class="box-body">
         <?php
             echo $this->Form->control(__('Nombre'));
             echo $this->Form->control(__('Nivel'));
             echo $this->Form->control(__('color'));
-            echo $this->Form->control(__('Publicado'));
+            echo $this->Form->control('published', ['label' => __('Publicado')]);
         ?>
+        </div>    
     </fieldset>
     <?= $this->Form->button(__('Enviar')) ?>
     <?= $this->Form->end() ?>
