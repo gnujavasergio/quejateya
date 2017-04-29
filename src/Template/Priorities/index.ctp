@@ -3,14 +3,6 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Acciones') ?></li>
-        <li><?= $this->Html->link(__('Nueva prioridad'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Puesto de la lista'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Nueva posicion'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="box-body no-padding text-center">
     <h3><?= __('Prioridades') ?></h3>
     <table class="table table-striped text-center">  <!--esta class lo que hace es espaciar las columnas -->
