@@ -5,27 +5,28 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Priority'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __('Acciones') ?></li>
+        <li><?= $this->Html->link(__('Nueva prioridad'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Puesto de la lista'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Nueva posicion'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="priorities index large-9 medium-8 columns content">
-    <h3><?= __('Priorities') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+<div class="box-body no-padding text-center">
+    <h3><?= __('Prioridades') ?></h3>
+    <table class="table table-striped text-center">  <!--esta class lo que hace es espaciar las columnas -->
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('level') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('color') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('published') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th style="width: 20px">#</th>
+                <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('name','Nombre') ?></th>
+                <th><?= $this->Paginator->sort('level','Nivel') ?></th>
+                <th><?= $this->Paginator->sort('color') ?></th>
+                <th><?= $this->Paginator->sort('published','Publicado') ?></th>
+                <th><?= $this->Paginator->sort('created','Creado') ?></th>
+                <th><?= $this->Paginator->sort('modified','Modificado') ?></th>
+                <th><?= $this->Paginator->sort('user_created') ?></th>
+                <th><?= $this->Paginator->sort('user_modified') ?></th>
+                <th class="actions" style="width: 200px"><?= __('Acciones') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -49,14 +50,14 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <div class="paginator">
+    <div class="paginator text-center">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->first('<< ' . __('Primero')) ?>
+            <?= $this->Paginator->prev('< ' . __('Anterior')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->next(__('Siguiente') . ' >') ?>
+            <?= $this->Paginator->last(__('Ultimo') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        <p class="text-center"><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, mostrando {{current}} registro de un total de {{count}} total')]) ?></p>
     </div>
 </div>
