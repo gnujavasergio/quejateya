@@ -1,37 +1,37 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $city->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $city->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Cities'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Countries'), ['controller' => 'Countries', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Country'), ['controller' => 'Countries', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="cities form large-9 medium-8 columns content">
-    <?= $this->Form->create($city) ?>
-    <fieldset>
-        <legend><?= __('Edit City') ?></legend>
-        <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('code');
-            echo $this->Form->control('published');
-            echo $this->Form->control('user_created');
-            echo $this->Form->control('user_modified');
-            echo $this->Form->control('country_id', ['options' => $countries]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Guardar')) ?>
-    <?= $this->Form->end() ?>
-</div>
+<section class="content-header">
+    <h1>
+        <?= __('Ciudades') ?>
+        <small><?= __('Modificar') ?></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="<?php echo $this->Url->build('/'); ?>"><i class="fa fa-dashboard"></i> <?= __('Inicio') ?></a></li>
+        <li><a href="<?php echo $this->Url->build('/cities'); ?>"><i class="fa fa-dashboard"></i> <?= __('Ciudades') ?></a></li>
+        <li class="active"><?= __('Modificar') ?></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= __('Modificar Ciudad'); ?></h3>
+                </div>
+                <?= $this->Form->create($city) ?>
+                <div class="box-body">
+                    <?php
+                    echo $this->Form->control('name', ['label' => __('Nombre')]);
+                    echo $this->Form->control('code', ['label' => __('Código')]);
+                    echo $this->Form->control('published', ['label' => __('Publicado')]);
+                    ?>
+                </div>
+                <div class="box-footer">
+                    <?php echo $this->Form->button('<i class="fa fa-save"></i> ' . __('Guardar')); ?>
+                </div>
+                <?= $this->Form->end() ?>
+            </div>
+        </div>
+    </div>
+</section>
