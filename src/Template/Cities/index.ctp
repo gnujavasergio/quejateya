@@ -30,38 +30,40 @@
                                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                                 <th><?= $this->Paginator->sort('code', 'Código') ?></th>
                                 <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
-                                <th class="actions" style="width: 150px"><?= __('Acciones') ?></th>
+                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
                         </thead> 
                         <tbody>
-             <?php foreach ($cities as $city): ?>
-                        <td><?= $this->Number->format($city->id) ?></td>
-                        <td><?= h($city->name) ?></td>
-                        <td><?= h($city->code) ?></td>
-                        <td><?= ($city->published)?__('Si'):__('No') ?></td>
-                        <td class="actions text-right">
-                                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $city->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
-                                    <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $city->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
-                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $city->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre {0}?', $city->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
-                        </td>
+                            <?php foreach ($cities as $city): ?>
+                            <tr>
+                            <td><?= $this->Number->format($city->id) ?></td>
+                            <td><?= h($city->name) ?></td>
+                            <td><?= h($city->code) ?></td>
+                            <td><?= ($city->published) ? __('Si') : __('No') ?></td>
+                            <td class="actions text-right">
+                                <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $city->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
+                                <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $city->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
+                                <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $city->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre {0}?', $city->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
+                            </td>
+                            </tr>
 
-
-           <?php endforeach; ?>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <div class="box box-footer">
-                        <div class="paginator text-center">
-                            <ul class="pagination">
+                </div>
+                <div class="box box-footer">
+                    <div class="paginator text-center">
+                        <ul class="pagination">
                             <?= $this->Paginator->first('<< ' . __('Primero')) ?>
                             <?= $this->Paginator->prev('< ' . __('Anterior')) ?>
                             <?= $this->Paginator->numbers() ?>
                             <?= $this->Paginator->next(__('Siguiente') . ' >') ?>
                             <?= $this->Paginator->last(__('Último') . ' >>') ?>
-                            </ul>
-                            <p class="text-center"><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, mostrando {{current}} registros de un total de {{count}}')]) ?></p>
-                        </div>
+                        </ul>
+                        <p class="text-center"><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, mostrando {{current}} registros de un total de {{count}}')]) ?></p>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

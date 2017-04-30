@@ -25,6 +25,7 @@
                     echo $this->Form->control('name', ['label' => __('Nombre')]);
                     echo $this->Form->control('code', ['label' => __('Código')]);
                     echo $this->Form->control('published', ['label' => __('Publicado')]);
+                    echo $this->Form->control('country_id', ['options' => $countries]);
                     ?>
                 </div>
                 <div class="box-footer">
@@ -34,4 +35,5 @@
             </div>
         </div>
     </div>
+
 </section>
