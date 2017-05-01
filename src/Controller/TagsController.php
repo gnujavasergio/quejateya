@@ -54,11 +54,11 @@ class TagsController extends AppController
             $tag->user_created=1;
            
             if ($this->Tags->save($tag)) {
-                $this->Flash->success(__('The tag has been saved.'));
+                $this->Flash->success(__('La Valoracion fue Guardada Satisfactoriamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The tag could not be saved. Please, try again.'));
+            $this->Flash->error(__('La valoracion no pudo ser Modificada, Intentelo de Nuevo.'));
         }
         $this->set(compact('tag'));
         $this->set('_serialize', ['tag']);
@@ -80,11 +80,11 @@ class TagsController extends AppController
             $tag = $this->Tags->patchEntity($tag, $this->request->getData());
             $tag->user_modified = 1;
             if ($this->Tags->save($tag)) {
-                $this->Flash->success(__('The tag has been saved.'));
+                $this->Flash->success(__('La valoración fue modificada Satisfactoriamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The tag could not be saved. Please, try again.'));
+            $this->Flash->error(__('La valoracion no pudo ser Modificada, Intentelo de Nuevo .'));
         }
         $this->set(compact('tag'));
         $this->set('_serialize', ['tag']);
@@ -102,11 +102,12 @@ class TagsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $tag = $this->Tags->get($id);
         if ($this->Tags->delete($tag)) {
-            $this->Flash->success(__('The tag has been deleted.'));
+            $this->Flash->success(__('Valoración Eliminada.'));
         } else {
-            $this->Flash->error(__('The tag could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La valoracion no pudo ser Eliminada, Intentelo más tarde.'));
         }
 
         return $this->redirect(['action' => 'index']);
     }
 }
+ 

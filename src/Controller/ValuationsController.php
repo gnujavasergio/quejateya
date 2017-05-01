@@ -58,7 +58,7 @@ class ValuationsController extends AppController
             }
             $this->Flash->error(__('La Valoracion no pudo ser Guardada, INtentelo de nuevo.'));
         }
-        $this->set(compact('valuation'));
+        $this->set(compact('LA valoracion'));
         $this->set('_serialize', ['valuation']);
     }
 
