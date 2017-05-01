@@ -99,7 +99,7 @@
                     
                     <?= $this->Html->link(__('Ver'), ['controller' => 'Posts', 'action' => 'view', $posts]) ?>
                     <?= $this->Html->link(__('Modificar'), ['controller' => 'Posts', 'action' => 'edit', $posts]) ?>
-                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Posts', 'action' => 'delete', $posts->], ['confirm' => __('Estás seguro de eliminar # {0}?', $posts->)]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Posts', 'action' => 'delete', $posts], ['confirm' => __('Estás seguro de eliminar # {0}?', $posts)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
