@@ -54,6 +54,7 @@ class CitiesController extends AppController
         $city = $this->Cities->newEntity();
         if ($this->request->is('post')) {
             $city = $this->Cities->patchEntity($city, $this->request->getData());
+              $city->user_created = 1;
             if ($this->Cities->save($city)) {
                 $this->Flash->success(__('The city has been saved.'));
 
@@ -80,6 +81,7 @@ class CitiesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $city = $this->Cities->patchEntity($city, $this->request->getData());
+            $city->user_modified = 1;
             if ($this->Cities->save($city)) {
                 $this->Flash->success(__('The city has been saved.'));
 

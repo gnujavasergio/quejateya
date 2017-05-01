@@ -3,6 +3,10 @@
   * @var \App\View\AppView $this
   */
 ?>
+                     <div class="pull-right">
+                        <a href="<?php echo $this->Url->build('/categories/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nueva prioridad') ?></a>
+                    </div>
+
 <div class="box-body no-padding text-center">
     <h3><?= __('Prioridades') ?></h3>
     <table class="table table-striped text-center">  <!--esta class lo que hace es espaciar las columnas -->

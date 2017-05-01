@@ -70,15 +70,7 @@ class ValuationsTable extends Table
             ->boolean('published')
             ->allowEmpty('published');
 
-        $validator
-            ->integer('user_created')
-            ->requirePresence('user_created', 'create')
-            ->notEmpty('user_created');
-
-        $validator
-            ->integer('user_modified')
-            ->requirePresence('user_modified', 'create')
-            ->notEmpty('user_modified');
+      
 
         return $validator;
     }

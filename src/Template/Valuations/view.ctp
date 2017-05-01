@@ -5,20 +5,20 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Valuation'), ['action' => 'edit', $valuation->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Valuation'), ['action' => 'delete', $valuation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $valuation->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Valuations'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Valuation'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?> </li>
+        <li class="heading"><?= __('Accciones') ?></li>
+        <li><?= $this->Html->link(__('Modificar Valoracion'), ['action' => 'edit', $valuation->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar Valoracion'), ['action' => 'delete', $valuation->id], ['confirm' => __('Seguro que quieres eliminar # {0}?', $valuation->id)]) ?> </li>
+        <li><?= $this->Html->link(__('Lista de Valoraciones'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nueva Valoracion'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Lista de Posts'), ['controller' => 'Posts', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nuevo Post'), ['controller' => 'Posts', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="valuations view large-9 medium-8 columns content">
     <h3><?= h($valuation->id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('NAME') ?></th>
+            <th scope="row"><?= __('Nombre') ?></th>
             <td><?= h($valuation->NAME) ?></td>
         </tr>
         <tr>
@@ -26,27 +26,27 @@
             <td><?= $this->Number->format($valuation->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('POSITION') ?></th>
+            <th scope="row"><?= __('Posición') ?></th>
             <td><?= $this->Number->format($valuation->POSITION) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User Created') ?></th>
+            <th scope="row"><?= __('Creado por') ?></th>
             <td><?= $this->Number->format($valuation->user_created) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User Modified') ?></th>
+            <th scope="row"><?= __('Modificado por') ?></th>
             <td><?= $this->Number->format($valuation->user_modified) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Created') ?></th>
+            <th scope="row"><?= __('Creado') ?></th>
             <td><?= h($valuation->created) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Modified') ?></th>
+            <th scope="row"><?= __('Modificado') ?></th>
             <td><?= h($valuation->modified) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Published') ?></th>
+            <th scope="row"><?= __('Publicado') ?></th>
             <td><?= $valuation->published ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
@@ -96,9 +96,9 @@
                 <td><?= h($posts->priority_id) ?></td>
                 <td><?= h($posts->valuation_id) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Posts', 'action' => 'view', $posts->]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Posts', 'action' => 'edit', $posts->]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Posts', 'action' => 'delete', $posts->], ['confirm' => __('Are you sure you want to delete # {0}?', $posts->)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Posts', 'action' => 'view', $posts->]) ?>
+                    <?= $this->Html->link(__('Modificar'), ['controller' => 'Posts', 'action' => 'edit', $posts->]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Posts', 'action' => 'delete', $posts->], ['confirm' => __('Estás seguro de eliminar # {0}?', $posts->)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
