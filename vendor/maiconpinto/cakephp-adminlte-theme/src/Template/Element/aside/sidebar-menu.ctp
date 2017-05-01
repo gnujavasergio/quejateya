@@ -16,7 +16,7 @@ if (file_exists($file)) {
     <li><a href="<?php echo $this->Url->build('/priorities'); ?>"><i class="fa fa-tasks"></i> <span><?= __('Prioridades') ?></span></a></li>
     <li><a href="<?php echo $this->Url->build('/valuations'); ?>"><i class="fa fa-thumbs-up"></i> <span><?= __('Valoraciones') ?></span></a></li>
     <li class="header"><?php echo __('QUEJAS'); ?></li>
-    <li><a href="<?php echo $this->Url->build('/posts'); ?>"><i class="fa fa-microphone"></i> <span><?= __('Publicaciones') ?></span></a></li>
+    <li><a href="<?php echo $this->Url->build('/posts'); ?>"><i class="fa fa-bullhorn"></i> <span><?= __('Publicaciones') ?></span></a></li>
     <li><a href="<?php echo $this->Url->build('/comments'); ?>"><i class="fa fa-comments"></i> <span><?= __('Comentarios') ?></span></a></li>
     
     

@@ -66,6 +66,10 @@ class CountriesTable extends Table
             ->notEmpty('code');
 
         $validator
+            ->boolean('published')
+            ->allowEmpty('published');
+
+        $validator
             ->integer('user_created')
             ->requirePresence('user_created', 'create')
             ->notEmpty('user_created');

@@ -9,6 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  * @property string $code
+ * @property bool $published
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property int $user_created

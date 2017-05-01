@@ -25,7 +25,8 @@ class CountriesTableTest extends TestCase
      */
     public $fixtures = [
         'app.countries',
-        'app.cities'
+        'app.cities',
+        'app.posts'
     ];
 
     /**
