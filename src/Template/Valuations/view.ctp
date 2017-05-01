@@ -96,8 +96,9 @@
                 <td><?= h($posts->priority_id) ?></td>
                 <td><?= h($posts->valuation_id) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Ver'), ['controller' => 'Posts', 'action' => 'view', $posts->]) ?>
-                    <?= $this->Html->link(__('Modificar'), ['controller' => 'Posts', 'action' => 'edit', $posts->]) ?>
+                    
+                    <?= $this->Html->link(__('Ver'), ['controller' => 'Posts', 'action' => 'view', $posts]) ?>
+                    <?= $this->Html->link(__('Modificar'), ['controller' => 'Posts', 'action' => 'edit', $posts]) ?>
                     <?= $this->Form->postLink(__('Eliminar'), ['controller' => 'Posts', 'action' => 'delete', $posts->], ['confirm' => __('Estás seguro de eliminar # {0}?', $posts->)]) ?>
                 </td>
             </tr>
