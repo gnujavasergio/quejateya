@@ -84,7 +84,7 @@ class TagsController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('La valoracion no pudo ser Modificada, Intentelo de Nuevo .'));
+            $this->Flash->error(__('La valoracion no pudo ser Modificada, Intentelo de Nuevo.'));
         }
         $this->set(compact('tag'));
         $this->set('_serialize', ['tag']);

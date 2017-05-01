@@ -60,7 +60,7 @@ class CitiesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The city could not be saved. Please, try again.'));
+            $this->Flash->error(__('La valoracion no pudo ser Modificada, Intentelo de Nuevo..'));
         }
         $countries = $this->Cities->Countries->find('list', ['limit' => 200]);
         $this->set(compact('city', 'countries'));
@@ -83,11 +83,11 @@ class CitiesController extends AppController
             $city = $this->Cities->patchEntity($city, $this->request->getData());
             $city->user_modified = 1;
             if ($this->Cities->save($city)) {
-                $this->Flash->success(__('The city has been saved.'));
+                $this->Flash->success(__('La valoración fue modificada Satisfactoriamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The city could not be saved. Please, try again.'));
+            $this->Flash->error(__('La valoracion no pudo ser Modificada, Intentelo de Nuevo.'));
         }
         $countries = $this->Cities->Countries->find('list', ['limit' => 200]);
         $this->set(compact('city', 'countries'));
@@ -106,9 +106,9 @@ class CitiesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $city = $this->Cities->get($id);
         if ($this->Cities->delete($city)) {
-            $this->Flash->success(__('The city has been deleted.'));
+            $this->Flash->success(__('Valoración Eliminada.'));
         } else {
-            $this->Flash->error(__('The city could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La valoracion no pudo ser Eliminada, Intentelo más tarde.'));
         }
 
         return $this->redirect(['action' => 'index']);
