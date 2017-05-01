@@ -19,17 +19,19 @@
                 <div class="box-header with-border">
                     <h3 class="box-title"><?= __('Nueva Etiqueta'); ?></h3>
                 </div>
-                <?= $this->Form->create($tag) ?>
-                <div class="box-body">
-                    <?php
-                    echo $this->Form->control('name', ['label' => __('Nombre')]);
-                    echo $this->Form->control('published', ['label' => __('Publicado')]);
-                    ?>
+                <div class="tags form large-9 medium-8 columns content">
+                    <?= $this->Form->create($tag) ?>
+                    <div class="box-body">
+                        <?php
+                        echo $this->Form->control('name', ['label' => __('Nombre')]);
+                        echo $this->Form->control('published', ['label' => __('Publicado')]);
+                        ?>
+                    </div>
+                    <div class="box-footer">
+                        <?php echo $this->Form->button('<i class="fa fa-save"></i> ' . __('Guardar')); ?>
+                    </div>
+                    <?= $this->Form->end() ?>
                 </div>
-                <div class="box-footer">
-                    <?php echo $this->Form->button('<i class="fa fa-save"></i> ' . __('Guardar')); ?>
-                </div>
-                <?= $this->Form->end() ?>
             </div>
         </div>
     </div>

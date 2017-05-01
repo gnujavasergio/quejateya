@@ -18,7 +18,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title"><?= __('Modificar Etiqueta'); ?></h3>
                 </div>
-                <?= $this->Form->create($country) ?>
+                <?= $this->Form->create($city) ?>
                 <div class="box-body">
                     <?php
                     echo $this->Form->control('name', ['label' => __('Nombre')]);

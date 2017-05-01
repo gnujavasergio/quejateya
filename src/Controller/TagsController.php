@@ -51,6 +51,8 @@ class TagsController extends AppController
         $tag = $this->Tags->newEntity();
         if ($this->request->is('post')) {
             $tag = $this->Tags->patchEntity($tag, $this->request->getData());
+            $tag->user_created=1;
+           
             if ($this->Tags->save($tag)) {
                 $this->Flash->success(__('The tag has been saved.'));
 
@@ -76,6 +78,7 @@ class TagsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $tag = $this->Tags->patchEntity($tag, $this->request->getData());
+            $tag->user_modified = 1;
             if ($this->Tags->save($tag)) {
                 $this->Flash->success(__('The tag has been saved.'));
 
