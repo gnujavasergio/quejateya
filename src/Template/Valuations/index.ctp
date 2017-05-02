@@ -28,7 +28,7 @@
                             <tr>
                                 <th style="width: 50px">#</th>
                                 <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
-                                <th><?= $this->Paginator->sort('position', 'Posision') ?></th>
+                                <th><?= $this->Paginator->sort('position', 'Posiciónn') ?></th>
                                <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
@@ -42,8 +42,8 @@
                                 <td><?= ($valuation->published)?__('Si'):__('No') ?></td>
                                 <td class="actions text-right">
                                     <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $valuation->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
-                                    <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $country->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
-                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $country->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre {0}?', $country->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
+                                    <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $valuation->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
+                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $valuation->id], ['confirm' => __('¿Está seguro de eliminar la Valoración {0}?', $valuation->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
