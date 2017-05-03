@@ -18,7 +18,26 @@ class TagsController extends AppController
      */
     public function index()
     {
-        $tags = $this->paginate($this->Tags);
+               $params = array();
+        $params['name'] = $this->request->query('name');
+        $params['published'] = $this->request->query('published');
+        $this->set('params', $params);
+        
+        $conditions = array();
+        if (!empty($params['name'])) {
+            $conditions['name LIKE'] = '%' . $params['name'] . '%';
+        }
+        if (is_numeric($params['published'])) {
+            $conditions['published'] = $params['published'];
+        }
+
+        $query = $this->Tags->find('all')
+                ->where($conditions);
+
+        $tags = $this->paginate($query, [
+            'limit' => 20,
+            'order' => ['tags.id' => 'DESC']
+        ]);
 
         $this->set(compact('tags'));
         $this->set('_serialize', ['tags']);
