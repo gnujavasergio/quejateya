@@ -96,9 +96,9 @@
                 <td><?= h($posts->priority_id) ?></td>
                 <td><?= h($posts->valuation_id) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Posts', 'action' => 'view', $posts->]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Posts', 'action' => 'edit', $posts->]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Posts', 'action' => 'delete', $posts->], ['confirm' => __('Are you sure you want to delete # {0}?', $posts->)]) ?>
+                    <?= $this->Html->link(__('View'), ['controller' => 'Posts', 'action' => 'view', $posts]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Posts', 'action' => 'edit', $posts]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Posts', 'action' => 'delete', $posts], ['confirm' => __('Are you sure you want to delete # {0}?', $posts)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
