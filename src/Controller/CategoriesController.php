@@ -18,10 +18,33 @@ class CategoriesController extends AppController
      */
     public function index()
     {
-        $categories = $this->paginate($this->Categories);
+         $params = array();
+        $params['name'] = $this->request->query('name');
+        $params['hashtag'] = $this->request->query('hashtag');
+        $params['published'] = $this->request->query('published');
+        $this->set('params', $params);
 
-        $this->set(compact('categories'));
-        $this->set('_serialize', ['categories']);
+        $conditions = array();
+        if (!empty($params['name'])) {
+            $conditions['name LIKE'] = '%' . $params['name'] . '%';
+        }
+        if (!empty($params['code'])) {
+            $conditions['hashtag LIKE'] = '%' . $params['hashtag']. '%';
+        }
+        if (is_numeric($params['published'])) {
+            $conditions['published'] = $params['published'];
+        }
+
+        $query = $this->Countries->find('all')
+                ->where($conditions);
+
+        $countries = $this->paginate($query, [
+            'limit' => 20,
+            'order' => ['categories.id' => 'DESC']
+        ]);
+
+        $this->set(compact('category'));
+        $this->set('_serialize', ['category']);
     }
 
     /**
