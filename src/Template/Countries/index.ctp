@@ -1,3 +1,19 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        function recargar() {
+            window.location = '<?php echo $this->Url->build(['controller' => 'countries', 'action' => 'index']); ?>?'
+                + 'name=' + $("#name").val()
+                + '&code=' + $("#code").val()
+                + '&published=' + $("#published").val();
+        }
+
+        $("#btnFiltro").click(function () {
+            recargar();
+        });
+    });
+</script>
+
+
 <section class="content-header">
     <h1>
         <?= __('Paises') ?>
@@ -25,6 +41,16 @@
                 <div class="box-body no-padding">
                     <table class="table table-striped ">
                         <thead>
+                            <?php
+                            echo $this->Form->create(null, [
+                                'url' => ['controller' => 'countries', 'action' => 'index'],
+                                'type' => 'get',
+                                'onsubmit' => 'return false;'
+                            ]);
+                            $this->Form->templates([
+                                'inputContainer' => '{{content}}'
+                            ]);
+                            ?>
                             <tr>
                                 <th style="width: 50px">#</th>
                                 <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
@@ -32,6 +58,37 @@
                                 <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
+                            <tr class="hidden-xs">
+                                <td></td>
+                                <td><?php echo $this->Form->input('name', ['label' => false, 'value' => $params['name']]); ?></td>
+                                <td><?php echo $this->Form->input('code', ['label' => false, 'value' => $params['code']]); ?></td>
+                                <td>
+                                    <?php
+                                    echo $this->Form->input('published', [
+                                        'label' => false,
+                                        'div' => false, 
+                                        'options' => [
+                                            '' => 'Todos',
+                                            '1' => 'Si',
+                                            '0' => 'No'
+                                        ],
+                                        'class' => 'form-control select2',
+                                        'value' => $params['published']
+                                    ]);
+                                    ?>
+                                </td>
+                                <td class="actions text-right">
+                                    <button type="submit" title="Filtrar resultados" class="btn btn-sm btn-default" id="btnFiltro"><i class="fa fa-filter"></i></button>
+                                    <?php
+                                    echo $this->Html->link(
+                                        '<i class="fa fa-trash"></i>', 
+                                        '/cat-zonas', 
+                                        ['escape' => false, 'class' => 'btn btn-sm btn-default', 'title' => 'Limpiar resultados']
+                                    );
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php echo $this->Form->end(); ?>
                         </thead>
                         <tbody>
                             <?php

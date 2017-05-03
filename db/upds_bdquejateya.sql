@@ -67,8 +67,8 @@ CREATE TABLE `countries` (
   `name` varchar(30) NOT NULL,
   `code` varchar(30) NOT NULL,
   `published` tinyint(1) DEFAULT '0',
-  `created` date NOT NULL,
-  `modified` date DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
   `user_created` int(11) NOT NULL,
   `user_modified` int(11) DEFAULT NULL,
   PRIMARY KEY(id)
