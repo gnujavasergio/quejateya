@@ -40,7 +40,7 @@ class CountriesController extends AppController
 
         $countries = $this->paginate($query, [
             'limit' => 20,
-            'order' => ['CatZonas.id' => 'DESC']
+            'order' => ['Countries.id' => 'DESC']
         ]);
 
         $this->set(compact('countries'));
