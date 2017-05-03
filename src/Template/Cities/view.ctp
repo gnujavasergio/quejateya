@@ -65,7 +65,7 @@
                     </div>
                     <?= $this->Form->create($city) ?>
                     <div class="box-body">
-                        <?php if (!empty($city->posts)): ?>
+                        <?php if (!empty($country->posts)): ?>
                             <table class="table table-striped">
                                 <tr>
                                     <th>#</th>
@@ -74,7 +74,7 @@
                                     <th><?= __('Publicado') ?></th>
                                 </tr>
                                 <?php $i = 0;
-                                foreach ($city->cities as $country): $i++;
+                                foreach ($city->countries as $country): $i++;
                                     ?>
                                     <tr>
                                         <td><?= h($i) ?></td>
