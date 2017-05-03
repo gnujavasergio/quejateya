@@ -18,11 +18,30 @@ class CitiesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Countries']
-        ];
-        $cities = $this->paginate($this->Cities);
+         $params = array();
+        $params['name'] = $this->request->query('name');
+        $params['code'] = $this->request->query('code');
+        $params['published'] = $this->request->query('published');
+        $this->set('params', $params);
 
+        $conditions = array();
+        if (!empty($params['name'])) {
+            $conditions['name LIKE'] = '%' . $params['name'] . '%';
+        }
+        if (!empty($params['code'])) {
+            $conditions['code LIKE'] = '%' . $params['code']. '%';
+        }
+        if (is_numeric($params['published'])) {
+            $conditions['published'] = $params['published'];
+        }
+
+        $query = $this->Cities->find('all')
+                ->where($conditions);
+
+        $cities = $this->paginate($query, [
+            'limit' => 20,
+            'order' => ['cities.id' => 'DESC']
+        ]);
         $this->set(compact('cities'));
         $this->set('_serialize', ['cities']);
     }
