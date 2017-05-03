@@ -34,9 +34,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($countries as $country): ?>
+                            <?php
+                            if ($countries) { 
+                                $page = $this->Paginator->current('Countries');
+                                $i = ($page - 1) * 20;
+                                foreach ($countries as $country): $i++;
+                            ?>
                             <tr>
-                                <td><?= $this->Number->format($country->id) ?></td>
+                                <td><?= $this->Number->format($i) ?></td>
                                 <td><?= h($country->name) ?></td>
                                 <td><?= h($country->code) ?></td>
                                 <td><?= ($country->published)?__('Si'):__('No') ?></td>
@@ -46,7 +51,10 @@
                                     <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $country->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre "{0}"?', $country->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                                 </td>
                             </tr>
-                            <?php endforeach; ?>
+                            <?php 
+                                endforeach;
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

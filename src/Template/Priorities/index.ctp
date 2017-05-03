@@ -4,7 +4,7 @@
   */
 ?>
                      <div class="pull-right">
-                        <a href="<?php echo $this->Url->build('/categories/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nueva prioridad') ?></a>
+                        <a href="<?php echo $this->Url->build('/priorities/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nueva prioridad') ?></a>
                     </div>
 
 <div class="box-body no-padding text-center">
@@ -13,21 +13,20 @@
         <thead>
             <tr>
                 <th style="width: 20px">#</th>
-                <th><?= $this->Paginator->sort('id') ?></th>
+               
                 <th><?= $this->Paginator->sort('name','Nombre') ?></th>
                 <th><?= $this->Paginator->sort('level','Nivel') ?></th>
                 <th><?= $this->Paginator->sort('color') ?></th>
                 <th><?= $this->Paginator->sort('published','Publicado') ?></th>
                 <th><?= $this->Paginator->sort('created','Creado') ?></th>
                 <th><?= $this->Paginator->sort('modified','Modificado') ?></th>
-                <th><?= $this->Paginator->sort('user_created') ?></th>
-                <th><?= $this->Paginator->sort('user_modified') ?></th>
                 <th class="actions" style="width: 200px"><?= __('Acciones') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($priorities as $priority): ?>
             <tr>
+               
                 <td><?= $this->Number->format($priority->id) ?></td>
                 <td><?= h($priority->name) ?></td>
                 <td><?= $this->Number->format($priority->level) ?></td>
@@ -35,12 +34,10 @@
                 <td><?= h($priority->published) ?></td>
                 <td><?= h($priority->created) ?></td>
                 <td><?= h($priority->modified) ?></td>
-                <td><?= $this->Number->format($priority->user_created) ?></td>
-                <td><?= $this->Number->format($priority->user_modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $priority->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $priority->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $priority->id], ['confirm' => __('Are you sure you want to delete # {0}?', $priority->id)]) ?>
+                <td class="actions text-right">
+                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $priority->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
+                    <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $priority->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
+                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $priority->id], ['confirm' => __('¿Está seguro de eliminar la Prioridad con nombre {0}?', $priority->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

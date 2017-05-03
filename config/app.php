@@ -230,7 +230,7 @@ return [
              */
             //'port' => 'non_standard_port_number',
             'username' => 'root',
-            'password' => '5653651',
+            'password' => 'carminiae',
             'database' => 'upds_bdquejateya',
             'encoding' => 'utf8',
             'timezone' => 'UTC',

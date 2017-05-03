@@ -51,12 +51,13 @@ class PrioritiesController extends AppController
         $priority = $this->Priorities->newEntity();
         if ($this->request->is('post')) {
             $priority = $this->Priorities->patchEntity($priority, $this->request->getData());
+            $priority->user_created=1;
             if ($this->Priorities->save($priority)) {
                 $this->Flash->success(__('The priority has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The priority could not be saved. Please, try again.'));
+            $this->Flash->error(__('La prioridad no puede ser registrada. Por Favor, vuelva a intentar.'));
         }
         $this->set(compact('priority'));
         $this->set('_serialize', ['priority']);

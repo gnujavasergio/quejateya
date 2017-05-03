@@ -1,35 +1,38 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $priority->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $priority->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Priorities'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="priorities form large-9 medium-8 columns content">
-    <?= $this->Form->create($priority) ?>
-    <fieldset>
-        <legend><?= __('Edit Priority') ?></legend>
-        <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('level');
-            echo $this->Form->control('color');
-            echo $this->Form->control('published');
-            echo $this->Form->control('user_created');
-            echo $this->Form->control('user_modified');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+<section class="content-header">
+    <h1>
+        <?= __('Prioridades') ?>
+        <small><?= __('Modificar') ?></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="<?php echo $this->Url->build('/'); ?>"><i class="fa fa-dashboard"></i> <?= __('Inicio') ?></a></li>
+        <li><a href="<?php echo $this->Url->build('/prioridades'); ?>"><i class="fa fa-dashboard"></i> <?= __('Prioridades') ?></a></li>
+        <li class="active"><?= __('Modificar') ?></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= __('Modificar País'); ?></h3>
+                </div>
+                <?= $this->Form->create($priority) ?>
+                <div class="box-body">
+                    <?php
+                    echo $this->Form->control('name', ['label' => __('Nombre')]);
+                    echo $this->Form->control('level', ['label' => __('nivel')]);
+                     echo $this->Form->control('color', ['label' => __('color')]);
+                    echo $this->Form->control('published', ['label' => __('Publicado')]);
+                    ?>
+                </div>
+                <div class="box-footer">
+                    <?php echo $this->Form->button('<i class="fa fa-save"></i> ' . __('Guardar')); ?>
+                </div>
+                <?= $this->Form->end() ?>
+            </div>
+        </div>
+    </div>
+</section>
