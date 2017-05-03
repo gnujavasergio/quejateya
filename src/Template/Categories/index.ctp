@@ -30,7 +30,7 @@
                                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                                 <th><?= $this->Paginator->sort('hashtag', 'hashtag') ?></th>
                                 <th><?= $this->Paginator->sort('published', 'publicado') ?></th>
-                                <th class="actions" style="width: 100px"><?= __('Acciones') ?></th>
+                                <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
                         </thead>
                         <tbody>
