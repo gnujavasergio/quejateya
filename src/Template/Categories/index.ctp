@@ -91,7 +91,12 @@
                             <?php echo $this->Form->end(); ?>
                         </thead>
                         <tbody>
-                            <?php foreach ($categories as $category): ?>
+                            <?php
+                            if ($categories) { 
+                                $page = $this->Paginator->current('Categories');
+                                $i = ($page - 1) * 20;
+                                foreach ($categories as $category): $i++;
+                            ?>
                             <tr>
                                 <td><?= $this->Number->format($category->id) ?></td>
                                 <td><?= h($category->name) ?></td>
@@ -103,7 +108,10 @@
                                     <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $category->id], ['confirm' => __('¿Está seguro de eliminar la Categoria con nombre {0}?', $category->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                                 </td>
                             </tr>
-                            <?php endforeach; ?>
+                            <?php 
+                                endforeach;
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
