@@ -1,3 +1,19 @@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        function reload() {
+            window.location = '<?php echo $this->Url->build(['controller' => 'categories', 'action' => 'index']); ?>?'
+                + 'name=' + $("#name").val()
+                + '&hashtag=' + $("#hashtag").val()
+                + '&published=' + $("#published").val();
+        }
+
+        $("#btnFilter").click(function () {
+            reload();
+        });
+    });
+</script>
+
 <section class="content-header">
     <h1>
         <?= __('Categorias') ?>
@@ -25,16 +41,62 @@
                 <div class="box-body no-padding">
                     <table class="table table-striped ">
                         <thead>
+                            <?php
+                            echo $this->Form->create(null, [
+                                'url' => ['controller' => 'categories', 'action' => 'index'],
+                                'type' => 'get',
+                                'onsubmit' => 'return false;'
+                            ]);
+                            $this->Form->templates([
+                                'inputContainer' => '{{content}}'
+                            ]);
+                            ?>
                             <tr>
                                 <th style="width: 50px">#</th>
-                                <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
-                                <th><?= $this->Paginator->sort('hashtag', 'hashtag') ?></th>
-                                <th><?= $this->Paginator->sort('published', 'publicado') ?></th>
-                                <th class="actions" style="width: 100px"><?= __('Acciones') ?></th>
+                                <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
+                                <th><?= $this->Paginator->sort('hashtag', __('hashtag')) ?></th>
+                                <th><?= $this->Paginator->sort('published', __('Publicado')) ?></th>
+                                <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
+                            <tr class="hidden-xs">
+                                <td></td>
+                                <td><?php echo $this->Form->input('name', ['label' => false, 'value' => $params['name']]); ?></td>
+                                <td><?php echo $this->Form->input('hashtag', ['label' => false, 'value' => $params['hashtag']]); ?></td>
+                                <td>
+                                    <?php
+                                    echo $this->Form->input('published', [
+                                        'label' => false,
+                                        'div' => false, 
+                                        'options' => [
+                                            '' => __('Todos'),
+                                            '1' => 'Si',
+                                            '0' => 'No'
+                                        ],
+                                        'class' => 'form-control select2',
+                                        'value' => $params['published']
+                                    ]);
+                                    ?>
+                                </td>
+                                <td class="actions text-right">
+                                    <button type="submit" title="<?= __('Filtrar resultados') ?>" class="btn btn-sm btn-default" id="btnFilter"><i class="fa fa-filter"></i></button>
+                                    <?php
+                                    echo $this->Html->link(
+                                        '<i class="fa fa-trash"></i>', 
+                                        '/countries', 
+                                        ['escape' => false, 'class' => 'btn btn-sm btn-default', 'title' => __('Limpiar resultados')]
+                                    );
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php echo $this->Form->end(); ?>
                         </thead>
                         <tbody>
-                            <?php foreach ($categories as $category): ?>
+                            <?php
+                            if ($categories) { 
+                                $page = $this->Paginator->current('Categories');
+                                $i = ($page - 1) * 20;
+                                foreach ($categories as $category): $i++;
+                            ?>
                             <tr>
                                 <td><?= $this->Number->format($category->id) ?></td>
                                 <td><?= h($category->name) ?></td>
@@ -46,7 +108,10 @@
                                     <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $category->id], ['confirm' => __('¿Está seguro de eliminar la Categoria con nombre {0}?', $category->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                                 </td>
                             </tr>
-                            <?php endforeach; ?>
+                            <?php 
+                                endforeach;
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

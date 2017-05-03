@@ -1,86 +1,85 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Country'), ['action' => 'edit', $country->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Country'), ['action' => 'delete', $country->id], ['confirm' => __('Are you sure you want to delete # {0}?', $country->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Countries'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Country'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Cities'), ['controller' => 'Cities', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New City'), ['controller' => 'Cities', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="countries view large-9 medium-8 columns content">
-    <h3><?= h($country->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($country->name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Code') ?></th>
-            <td><?= h($country->code) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($country->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('User Created') ?></th>
-            <td><?= $this->Number->format($country->user_created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('User Modified') ?></th>
-            <td><?= $this->Number->format($country->user_modified) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($country->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($country->modified) ?></td>
-        </tr>
-    </table>
-    <div class="related">
-        <h4><?= __('Related Cities') ?></h4>
-        <?php if (!empty($country->cities)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Name') ?></th>
-                <th scope="col"><?= __('Code') ?></th>
-                <th scope="col"><?= __('Published') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col"><?= __('User Created') ?></th>
-                <th scope="col"><?= __('User Modified') ?></th>
-                <th scope="col"><?= __('Country Id') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($country->cities as $cities): ?>
-            <tr>
-                <td><?= h($cities->id) ?></td>
-                <td><?= h($cities->name) ?></td>
-                <td><?= h($cities->code) ?></td>
-                <td><?= h($cities->published) ?></td>
-                <td><?= h($cities->created) ?></td>
-                <td><?= h($cities->modified) ?></td>
-                <td><?= h($cities->user_created) ?></td>
-                <td><?= h($cities->user_modified) ?></td>
-                <td><?= h($cities->country_id) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Cities', 'action' => 'view', $cities->]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Cities', 'action' => 'edit', $cities->]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Cities', 'action' => 'delete', $cities->], ['confirm' => __('Are you sure you want to delete # {0}?', $cities->)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
+<section class="content-header">
+    <h1>
+        <?= __('Paises') ?>
+        <small><?= __('Ver') ?></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="<?php echo $this->Url->build('/'); ?>"><i class="fa fa-dashboard"></i> <?= __('Inicio') ?></a></li>
+        <li><a href="<?php echo $this->Url->build('/countries'); ?>"><i class="fa fa-dashboard"></i> <?= __('Paises') ?></a></li>
+        <li class="active"><?= $country->name ?></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= __('Datos del País'); ?></h3>
+                </div>
+                <?= $this->Form->create($country) ?>
+                <div class="box-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th style="width: 40%;"><?= __('Nombre') ?></th>
+                            <td><?= h($country->name) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Código') ?></th>
+                            <td><?= h($country->code) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Publicado') ?></th>
+                            <td><?= ($country->published == 'S')?'Si':'No' ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Creado por') ?></th>
+                            <td><?= $this->Number->format($country->user_created) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Modificado por') ?></th>
+                            <td><?= $this->Number->format($country->user_modified) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Creado') ?></th>
+                            <td><?= $this->Time->format($country->created, 'dd/MM/Y HH:mm:ss') ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Modificado') ?></th>
+                            <td><?= $this->Time->format($country->modified, 'dd/MM/Y HH:mm:ss') ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= __('Ciudades relacionadas'); ?></h3>
+                </div>
+                <?= $this->Form->create($country) ?>
+                <div class="box-body">
+                    <?php if (!empty($country->cities)): ?>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>#</th>
+                            <th><?= __('Nombre') ?></th>
+                            <th><?= __('Código') ?></th>
+                            <th><?= __('Publicado') ?></th>
+                        </tr>
+                        <?php $i = 0; foreach ($country->cities as $city): $i++; ?>
+                        <tr>
+                            <td><?= h($i) ?></td>
+                            <td><?= h($city->name) ?></td>
+                            <td><?= h($city->code) ?></td>
+                            <td><?= ($city->published == 1)?'Si':'No' ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                    <?php endif; ?>
+                </div>
+                
+            </div>
+        </div>
     </div>
-</div>
+</section>

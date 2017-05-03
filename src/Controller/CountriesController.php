@@ -18,7 +18,30 @@ class CountriesController extends AppController
      */
     public function index()
     {
-        $countries = $this->paginate($this->Countries);
+        $params = array();
+        $params['name'] = $this->request->query('name');
+        $params['code'] = $this->request->query('code');
+        $params['published'] = $this->request->query('published');
+        $this->set('params', $params);
+
+        $conditions = array();
+        if (!empty($params['name'])) {
+            $conditions['name LIKE'] = '%' . $params['name'] . '%';
+        }
+        if (!empty($params['code'])) {
+            $conditions['code LIKE'] = '%' . $params['code']. '%';
+        }
+        if (is_numeric($params['published'])) {
+            $conditions['published'] = $params['published'];
+        }
+
+        $query = $this->Countries->find('all')
+                ->where($conditions);
+
+        $countries = $this->paginate($query, [
+            'limit' => 20,
+            'order' => ['Countries.id' => 'DESC']
+        ]);
 
         $this->set(compact('countries'));
         $this->set('_serialize', ['countries']);
