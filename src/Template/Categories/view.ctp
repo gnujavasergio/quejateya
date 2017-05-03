@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-        <?= __('Paises') ?>
+        <?= __('Categorias') ?>
         <small><?= __('Ver') ?></small>
     </h1>
     <ol class="breadcrumb">
