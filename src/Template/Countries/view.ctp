@@ -44,11 +44,11 @@
                         </tr>
                         <tr>
                             <th><?= __('Creado') ?></th>
-                            <td><?= h($country->created) ?></td>
+                            <td><?= $this->Time->format($country->created, 'dd/MM/Y HH:mm:ss') ?></td>
                         </tr>
                         <tr>
                             <th><?= __('Modificado') ?></th>
-                            <td><?= h($country->modified) ?></td>
+                            <td><?= $this->Time->format($country->modified, 'dd/MM/Y HH:mm:ss') ?></td>
                         </tr>
                     </table>
                 </div>
