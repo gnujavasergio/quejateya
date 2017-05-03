@@ -2,3 +2,5 @@
 /tmp/
 /config/app.php
 /nbproject/*
+/tmp/*
+/logs/*
