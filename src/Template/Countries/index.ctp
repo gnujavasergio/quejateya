@@ -1,14 +1,14 @@
 <script type="text/javascript">
     $(document).ready(function () {
-        function recargar() {
+        function reload() {
             window.location = '<?php echo $this->Url->build(['controller' => 'countries', 'action' => 'index']); ?>?'
                 + 'name=' + $("#name").val()
                 + '&code=' + $("#code").val()
                 + '&published=' + $("#published").val();
         }
 
-        $("#btnFiltro").click(function () {
-            recargar();
+        $("#btnFilter").click(function () {
+            reload();
         });
     });
 </script>
@@ -54,8 +54,8 @@
                             <tr>
                                 <th style="width: 50px">#</th>
                                 <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
-                                <th><?= $this->Paginator->sort('code', 'Código') ?></th>
-                                <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
+                                <th><?= $this->Paginator->sort('code', __('Código')) ?></th>
+                                <th><?= $this->Paginator->sort('published', __('Publicado')) ?></th>
                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
                             <tr class="hidden-xs">
@@ -68,7 +68,7 @@
                                         'label' => false,
                                         'div' => false, 
                                         'options' => [
-                                            '' => 'Todos',
+                                            '' => __('Todos'),
                                             '1' => 'Si',
                                             '0' => 'No'
                                         ],
@@ -78,12 +78,12 @@
                                     ?>
                                 </td>
                                 <td class="actions text-right">
-                                    <button type="submit" title="Filtrar resultados" class="btn btn-sm btn-default" id="btnFiltro"><i class="fa fa-filter"></i></button>
+                                    <button type="submit" title="<?= __('Filtrar resultados') ?>" class="btn btn-sm btn-default" id="btnFilter"><i class="fa fa-filter"></i></button>
                                     <?php
                                     echo $this->Html->link(
                                         '<i class="fa fa-trash"></i>', 
-                                        '/cat-zonas', 
-                                        ['escape' => false, 'class' => 'btn btn-sm btn-default', 'title' => 'Limpiar resultados']
+                                        '/countries', 
+                                        ['escape' => false, 'class' => 'btn btn-sm btn-default', 'title' => __('Limpiar resultados')]
                                     );
                                     ?>
                                 </td>
