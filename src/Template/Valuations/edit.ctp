@@ -9,7 +9,7 @@
         <li><?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $valuation->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $valuation->id)]
+                ['confirm' => __('Estás seguro de querer eliminar la siguiente valoración?: # {0}?', $valuation->id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Valuations'), ['action' => 'index']) ?></li>
@@ -22,8 +22,8 @@
     <fieldset>
         <legend><?= __('Edit Valuation') ?></legend>
         <?php
-            echo $this->Form->control('NAME');
-            echo $this->Form->control('POSITION');
+            echo $this->Form->control('name');
+            echo $this->Form->control('position');
             echo $this->Form->control('published');
             echo $this->Form->control('user_created');
             echo $this->Form->control('user_modified');
