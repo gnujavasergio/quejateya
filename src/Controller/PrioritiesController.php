@@ -18,7 +18,7 @@ class PrioritiesController extends AppController
      */
     public function index()
     {
-         $params = array();
+        $params = array();
         $params['name'] = $this->request->query('name');
         $params['level'] = $this->request->query('level');
         $params['color'] = $this->request->query('color');
@@ -31,12 +31,22 @@ class PrioritiesController extends AppController
         if (!empty($params['name'])) {
             $conditions['name LIKE'] = '%' . $params['name'] . '%';
         }
-        if (!empty($params['code'])) {
-            $conditions['code LIKE'] = '%' . $params['code']. '%';
+        if (!empty($params['level'])) {
+            $conditions['level LIKE'] = '%' . $params['level']. '%';
+        }
+        if (!empty($params['color'])) {
+            $conditions['color LIKE'] = '%' . $params['color'] . '%';
         }
         if (is_numeric($params['published'])) {
             $conditions['published'] = $params['published'];
         }
+        if (!empty($params['created'])) {
+            $conditions['created LIKE'] = '%' . $params['created'] . '%';
+        }
+        if (!empty($params['modified'])) {
+            $conditions['modified LIKE'] = '%' . $params['modified'] . '%';
+        }
+        
 
         $query = $this->Priorities->find('all')
                 ->where($conditions);

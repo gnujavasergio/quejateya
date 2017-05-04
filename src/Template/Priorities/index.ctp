@@ -6,6 +6,8 @@
                 + '&level=' + $("#level").val()
                 + '&color=' + $("#color").val()
                 + '&published=' + $("#published").val();
+                + '&created=' + $("#created").val();
+                + '&modified=' + $("#modified").val();
         }
 
         $("#btnFilter").click(function () {
@@ -65,6 +67,7 @@
                                 <td></td>
                                 <td><?php echo $this->Form->input('name', ['label' => false, 'value' => $params['name']]); ?></td>
                                 <td><?php echo $this->Form->input('level', ['label' => false, 'value' => $params['level']]); ?></td>
+                                <td><?php echo $this->Form->input('color', ['label' => false, 'value' => $params['color']]); ?></td>
                                 <td>
                                     <?php
                                     echo $this->Form->input('published', [
@@ -80,6 +83,8 @@
                                     ]);
                                     ?>
                                 </td>
+                                <td><?php echo $this->Form->input('created', ['label' => false, 'value' => $params['created']]); ?></td>
+                                <td><?php echo $this->Form->input('modified', ['label' => false, 'value' => $params['modified']]); ?></td>
                                 <td class="actions text-right">
                                     <button type="submit" title="<?= __('Filtrar resultados') ?>" class="btn btn-sm btn-default" id="btnFilter"><i class="fa fa-filter"></i></button>
                                     <?php
