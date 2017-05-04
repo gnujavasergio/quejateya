@@ -21,9 +21,7 @@
                 </div>
                 <?= $this->Form->create($city) ?>
                 <div class="box-body">
-                                      
-                        <h3><?= h($city->name) ?></h3>
-                             <table class="table table-striped">   
+                                     <table class="table table-striped">   
                                 <tr>
                                     <th style="width: 40%;"><?= __('Nombre') ?></th>
                                     <td><?= h($city->name) ?></td>
@@ -33,7 +31,7 @@
                                     <td><?= h($city->code) ?></td>
                                 </tr>
                                 <tr>
-                                    <th><?= __('Country') ?></th>
+                                    <th><?= __('País') ?></th>
                                     <td><?= $city->has('country') ? $this->Html->link($city->country->name, ['controller' => 'Countries', 'action' => 'view', $city->country->id]) : '' ?></td>
                                 </tr>
                                 <tr>
@@ -59,34 +57,5 @@
                             </table>
                         </div>
                 </div>
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><?= __('Paises relacionados'); ?></h3>
-                    </div>
-                    <?= $this->Form->create($city) ?>
-                    <div class="box-body">
-                        <?php if (!empty($country->posts)): ?>
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>#</th>
-                                    <th><?= __('Nombre') ?></th>
-                                    <th><?= __('Código') ?></th>
-                                    <th><?= __('Publicado') ?></th>
-                                </tr>
-                                <?php $i = 0;
-                                foreach ($city->countries as $country): $i++;
-                                    ?>
-                                    <tr>
-                                        <td><?= h($i) ?></td>
-                                        <td><?= h($city->name) ?></td>
-                                        <td><?= h($city->code) ?></td>
-                                        <td><?= ($city->published == 1) ? 'Si' : 'No' ?></td>
-                                    </tr>
-                            <?php endforeach; ?>
-                            </table>
-<?php endif; ?>
-                    </div>
-                </div>
-            </div>
         </div>
 </section>
