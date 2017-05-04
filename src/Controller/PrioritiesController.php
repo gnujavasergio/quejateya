@@ -20,8 +20,11 @@ class PrioritiesController extends AppController
     {
          $params = array();
         $params['name'] = $this->request->query('name');
-        $params['code'] = $this->request->query('code');
+        $params['level'] = $this->request->query('level');
+        $params['color'] = $this->request->query('color');
         $params['published'] = $this->request->query('published');
+        $params['created'] = $this->request->query('created');
+        $params['modified'] = $this->request->query('modified');
         $this->set('params', $params);
 
         $conditions = array();

@@ -3,7 +3,8 @@
         function reload() {
             window.location = '<?php echo $this->Url->build(['controller' => 'priorities', 'action' => 'index']); ?>?'
                 + 'name=' + $("#name").val()
-                + '&hashtag=' + $("#hashtag").val()
+                + '&level=' + $("#level").val()
+                + '&color=' + $("#color").val()
                 + '&published=' + $("#published").val();
         }
 
@@ -56,12 +57,14 @@
                                 <th><?= $this->Paginator->sort('level', __('Nivel')) ?></th>
                                 <th><?= $this->Paginator->sort('color', __('color')) ?></th>
                                 <th><?= $this->Paginator->sort('published', __('Publicado')) ?></th>
+                                <th><?= $this->Paginator->sort('created', __('Creado')) ?></th>
+                                <th><?= $this->Paginator->sort('modified', __('Modificado')) ?></th>
                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
                             <tr class="hidden-xs">
                                 <td></td>
                                 <td><?php echo $this->Form->input('name', ['label' => false, 'value' => $params['name']]); ?></td>
-                                <td><?php echo $this->Form->input('level', ['label' => false, 'value' => $params['hashtag']]); ?></td>
+                                <td><?php echo $this->Form->input('level', ['label' => false, 'value' => $params['level']]); ?></td>
                                 <td>
                                     <?php
                                     echo $this->Form->input('published', [
@@ -92,7 +95,7 @@
                         </thead>
                         <tbody>
                             <?php
-                            if ($priority) { 
+                            if ($priorities) { 
                                 $page = $this->Paginator->current('Priorities');
                                 $i = ($page - 1) * 20;
                                 foreach ($priorities as $priority): $i++;
@@ -103,6 +106,8 @@
                                 <td><?= $this->Number->format($priority->level) ?></td>
                                 <td><?= h($priority->color) ?></td>
                                 <td><?= ($priority->published)?__('Si'):__('No') ?></td>
+                                <td><?= h($priority->created) ?></td>
+                                <td><?= h($priority->modified) ?></td>
                                 <td class="actions text-right">
                                     <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $priority->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
                                     <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $priority->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
