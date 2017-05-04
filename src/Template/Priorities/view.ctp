@@ -1,107 +1,89 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Priority'), ['actiones' => 'edit', $priority->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Priority'), ['action' => 'delete', $priority->id], ['confirm' => __('Are you sure you want to delete # {0}?', $priority->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Priorities'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Priority'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="priorities view large-9 medium-8 columns content">
-    <h3><?= h($priority->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($priority->name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Color') ?></th>
-            <td><?= h($priority->color) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($priority->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Level') ?></th>
-            <td><?= $this->Number->format($priority->level) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('User Created') ?></th>
-            <td><?= $this->Number->format($priority->user_created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('User Modified') ?></th>
-            <td><?= $this->Number->format($priority->user_modified) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($priority->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($priority->modified) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Published') ?></th>
-            <td><?= $priority->published ? __('Yes') : __('No'); ?></td>
-        </tr>
-    </table>
-    <div class="related">
-        <h4><?= __('Related Posts') ?></h4>
-        <?php if (!empty($priority->posts)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Title') ?></th>
-                <th scope="col"><?= __('Description') ?></th>
-                <th scope="col"><?= __('Tags') ?></th>
-                <th scope="col"><?= __('Latitude') ?></th>
-                <th scope="col"><?= __('Longitude') ?></th>
-                <th scope="col"><?= __('Published') ?></th>
-                <th scope="col"><?= __('Solved') ?></th>
-                <th scope="col"><?= __('Created') ?></th>
-                <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col"><?= __('Solved Date') ?></th>
-                <th scope="col"><?= __('User Created') ?></th>
-                <th scope="col"><?= __('User Modified') ?></th>
-                <th scope="col"><?= __('User Solved') ?></th>
-                <th scope="col"><?= __('Category Id') ?></th>
-                <th scope="col"><?= __('City Id') ?></th>
-                <th scope="col"><?= __('Priority Id') ?></th>
-                <th scope="col"><?= __('Valuation Id') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($priority->posts as $posts): ?>
-            <tr>
-                <td><?= h($posts->id) ?></td>
-                <td><?= h($posts->title) ?></td>
-                <td><?= h($posts->description) ?></td>
-                <td><?= h($posts->tags) ?></td>
-                <td><?= h($posts->latitude) ?></td>
-                <td><?= h($posts->longitude) ?></td>
-                <td><?= h($posts->published) ?></td>
-                <td><?= h($posts->solved) ?></td>
-                <td><?= h($posts->created) ?></td>
-                <td><?= h($posts->modified) ?></td>
-                <td><?= h($posts->solved_date) ?></td>
-                <td><?= h($posts->user_created) ?></td>
-                <td><?= h($posts->user_modified) ?></td>
-                <td><?= h($posts->user_solved) ?></td>
-                <td><?= h($posts->category_id) ?></td>
-                <td><?= h($posts->city_id) ?></td>
-                <td><?= h($posts->priority_id) ?></td>
-                <td><?= h($posts->valuation_id) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Posts', 'action' => 'view', $posts->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Posts', 'action' => 'edit', $posts->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Posts', 'action' => 'delete', $posts->id], ['confirm' => __('Are you sure you want to delete # {0}?', $posts->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
+<section class="content-header">
+    <h1>
+        <?= __('Prioridades') ?>
+        <small><?= __('Ver') ?></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="<?php echo $this->Url->build('/priorities'); ?>"><i class="fa fa-dashboard"></i> <?= __('Inicio') ?></a></li>
+        <li><a href="<?php echo $this->Url->build('/priorities'); ?>"><i class="fa fa-dashboard"></i> <?= __('Prioridades') ?></a></li>
+        <li class="active"><?= $priority->name ?></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= __('Datos de la Categoria'); ?></h3>
+                </div>
+                <?= $this->Form->create($priority) ?>
+                <div class="box-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th style="width: 40%;"><?= __('Nombre') ?></th>
+                            <td><?= h($priority->name) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('nivel') ?></th>
+                            <td><?= h($priority->level) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('color') ?></th>
+                            <td><?= h($priority->color) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Publicado') ?></th>
+                            <td><?= ($priority->published == 'S')?'Si':'No' ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Creado por') ?></th>
+                            <td><?= $this->Number->format($priority->user_created) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Modificado por') ?></th>
+                            <td><?= $this->Number->format($priority->user_modified) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Creado') ?></th>
+                            <td><?= $this->Time->format($priority->created, 'dd/MM/Y HH:mm:ss') ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Modificado') ?></th>
+                            <td><?= $this->Time->format($priority->modified, 'dd/MM/Y HH:mm:ss') ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><?= __('Publicaciones relacionadas'); ?></h3>
+                </div>
+                <?= $this->Form->create($priority) ?>
+                <div class="box-body">
+                    <?php if (!empty($priority->posts)): ?>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>#</th>
+                            <th><?= __('Nombre') ?></th>
+                            <th><?= __('Código') ?></th>
+                            <th><?= __('Publicado') ?></th>
+                        </tr>
+                        <?php $i = 0; foreach ($priority->posts as $posts): $i++; ?>
+                        <tr>
+                            <td><?= h($i) ?></td>
+                            <td><?= h($post->name) ?></td>
+                            <td><?= h($post->code) ?></td>
+                            <td><?= ($post->published == 1)?'Si':'No' ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                    <?php endif; ?>
+                </div>
+                
+            </div>
+        </div>
     </div>
-</div>
+</section>
