@@ -1,7 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         function reload() {
-            window.location = '<?php echo $this->Url->build(['controller' => 'countries', 'action' => 'index']); ?>?'
+            window.location = '<?php echo $this->Url->build(['controller' => 'valuations', 'action' => 'index']); ?>?'
                 + 'name=' + $("#name").val()
                 + '&position=' + $("#position").val()
                 + '&published=' + $("#published").val();
