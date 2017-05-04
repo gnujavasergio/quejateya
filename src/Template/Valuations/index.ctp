@@ -1,3 +1,18 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        function reload() {
+            window.location = '<?php echo $this->Url->build(['controller' => 'valuations', 'action' => 'index']); ?>?'
+                + 'name=' + $("#name").val()
+                + '&position=' + $("#position").val()
+                + '&published=' + $("#published").val();
+        }
+
+        $("#btnFilter").click(function () {
+            reload();
+        });
+    });
+</script>
+
 <section class="content-header">
     <h1>
         <?= __('Valoraciones') ?>
@@ -25,13 +40,57 @@
                 <div class="box-body no-padding">
                     <table class="table table-striped ">
                         <thead>
+                            <?php
+                            echo $this->Form->create(null, [
+                                'url' => ['controller' => 'valuations', 'action' => 'index'],
+                                'type' => 'get',
+                                'onsubmit' => 'return false;'
+                            ]);
+                            $this->Form->templates([
+                                'inputContainer' => '{{content}}'
+                            ]);
+                            ?>
                             <tr>
                                 <th style="width: 50px">#</th>
                                 <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
-                                <th><?= $this->Paginator->sort('position', 'Posiciónn') ?></th>
+                                <th><?= $this->Paginator->sort('position', 'Posición') ?></th>
                                <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
+                            
+                         
+                            <tr class="hidden-xs">
+                                <td></td>
+                                <td><?php echo $this->Form->input('name', ['label' => false, 'value' => $params['name']]); ?></td>
+                                <td><?php echo $this->Form->input('position', ['label' => false, 'value' => $params['position']]); ?></td>
+                                <td>
+                                    <?php
+                                    echo $this->Form->input('published', [
+                                        'label' => false,
+                                        'div' => false, 
+                                        'options' => [
+                                            '' => __('Todos'),
+                                            '1' => 'Si',
+                                            '0' => 'No'
+                                        ],
+                                        'class' => 'form-control select2',
+                                        'value' => $params['published']
+                                    ]);
+                                    ?>
+                                </td>
+                                <td class="actions text-right">
+                                    <button type="submit" title="<?= __('Filtrar resultados') ?>" class="btn btn-sm btn-default" id="btnFilter"><i class="fa fa-filter"></i></button>
+                                    <?php
+                                    echo $this->Html->link(
+                                        '<i class="fa fa-trash"></i>', 
+                                        '/valuations', 
+                                        ['escape' => false, 'class' => 'btn btn-sm btn-default', 'title' => __('Limpiar resultados')]
+                                    );
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php echo $this->Form->end(); ?>   
+                            
                         </thead>
                         <tbody>
                             <?php foreach ($valuations as $valuation): ?>

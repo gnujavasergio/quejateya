@@ -18,9 +18,10 @@ class CitiesController extends AppController
      */
     public function index()
     {
-         $params = array();
+        $params = array();
         $params['name'] = $this->request->query('name');
         $params['code'] = $this->request->query('code');
+        $params['country'] = $this->request->query('country');
         $params['published'] = $this->request->query('published');
         $this->set('params', $params);
 
@@ -31,18 +32,25 @@ class CitiesController extends AppController
         if (!empty($params['code'])) {
             $conditions['code LIKE'] = '%' . $params['code']. '%';
         }
+        if (!empty($params['country'])) {
+            $conditions['country_id'] = $params['country'];
+        }
         if (is_numeric($params['published'])) {
             $conditions['published'] = $params['published'];
         }
 
         $query = $this->Cities->find('all')
+                ->contain(['Countries'])
                 ->where($conditions);
 
         $cities = $this->paginate($query, [
             'limit' => 20,
             'order' => ['cities.id' => 'DESC']
         ]);
-        $this->set(compact('cities'));
+        
+        $countries = $this->Cities->Countries->find('list', ['order' => ['Countries.name' => 'ASC']]);
+        
+        $this->set(compact('cities', 'countries'));
         $this->set('_serialize', ['cities']);
     }
 
