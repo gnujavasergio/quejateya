@@ -13,6 +13,7 @@
     });
 </script>
 
+
 <section class="content-header">
     <h1>
         <?= __('Valoraciones') ?>
@@ -32,9 +33,9 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Lista de Valoraciones</h3>
+                    <h3 class="box-title">Listado de Paises</h3>
                     <div class="pull-right">
-                        <a href="<?php echo $this->Url->build('/valuations/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nuevo') ?></a>
+                        <a href="<?php echo $this->Url->build('/valuations/add'); ?>" class="btn btn-xs btn-success"><i class="fa fa-plus"></i> <?= __('Nuevo') ?></a>
                     </div>
                 </div>
                 <div class="box-body no-padding">
@@ -53,12 +54,10 @@
                             <tr>
                                 <th style="width: 50px">#</th>
                                 <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
-                                <th><?= $this->Paginator->sort('position', 'Posición') ?></th>
-                               <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
+                                <th><?= $this->Paginator->sort('position', __('Posición')) ?></th>
+                                <th><?= $this->Paginator->sort('published', __('Publicado')) ?></th>
                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
-                            
-                         
                             <tr class="hidden-xs">
                                 <td></td>
                                 <td><?php echo $this->Form->input('name', ['label' => false, 'value' => $params['name']]); ?></td>
@@ -89,23 +88,30 @@
                                     ?>
                                 </td>
                             </tr>
-                            <?php echo $this->Form->end(); ?>   
-                            
+                            <?php echo $this->Form->end(); ?>
                         </thead>
                         <tbody>
-                            <?php foreach ($valuations as $valuation): ?>
+                            <?php
+                            if ($valuations) { 
+                                $page = $this->Paginator->current('Valuations');
+                                $i = ($page - 1) * 20;
+                                foreach ($valuations as $valuation): $i++;
+                            ?>
                             <tr>
-                                <td><?= $this->Number->format($valuation->id) ?></td>
+                                <td><?= $this->Number->format($i) ?></td>
                                 <td><?= h($valuation->name) ?></td>
-                                <td><?= h($valuation->code) ?></td>
+                                <td><?= h($valuation->position) ?></td>
                                 <td><?= ($valuation->published)?__('Si'):__('No') ?></td>
                                 <td class="actions text-right">
                                     <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $valuation->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
                                     <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $valuation->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
-                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $valuation->id], ['confirm' => __('¿Está seguro de eliminar la Valoración {0}?', $valuation->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
+                                    <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $valuation->id], ['confirm' => __('¿Está seguro de eliminar el País con nombre "{0}"?', $valuation->name), 'escape' => false, 'class' => 'btn btn-xs btn-danger', 'title' => __('Eliminar')]) ?>
                                 </td>
                             </tr>
-                            <?php endforeach; ?>
+                            <?php 
+                                endforeach;
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
