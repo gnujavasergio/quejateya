@@ -1,8 +1,4 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
+
                      <div class="pull-right">
                         <a href="<?php echo $this->Url->build('/priorities/add'); ?>" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> <?= __('Nueva prioridad') ?></a>
                     </div>
