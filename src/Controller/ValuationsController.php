@@ -70,20 +70,22 @@ class ValuationsController extends AppController
      * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add()
+    
     {
         $valuation = $this->Valuations->newEntity();
         if ($this->request->is('post')) {
             $valuation = $this->Valuations->patchEntity($valuation, $this->request->getData());
+            $valuation->user_created=1;
             if ($this->Valuations->save($valuation)) {
-                $this->Flash->success(__('La Valoracion fue Guardada Satisfactoriamente.'));
+                $this->Flash->success(__('La valoración ha sido Guardada satisfactoriamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('La Valoracion no pudo ser Guardada, Intentelo de nuevo.'));
         }
-        $this->set(compact('La valoracion'));
+        $this->set(compact('valuation'));
         $this->set('_serialize', ['valuation']);
-    }
+    }                                              
 
     /**
      * Edit method
