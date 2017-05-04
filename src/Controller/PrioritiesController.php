@@ -18,8 +18,30 @@ class PrioritiesController extends AppController
      */
     public function index()
     {
-        $priorities = $this->paginate($this->Priorities);
+         $params = array();
+        $params['name'] = $this->request->query('name');
+        $params['code'] = $this->request->query('code');
+        $params['published'] = $this->request->query('published');
+        $this->set('params', $params);
 
+        $conditions = array();
+        if (!empty($params['name'])) {
+            $conditions['name LIKE'] = '%' . $params['name'] . '%';
+        }
+        if (!empty($params['code'])) {
+            $conditions['code LIKE'] = '%' . $params['code']. '%';
+        }
+        if (is_numeric($params['published'])) {
+            $conditions['published'] = $params['published'];
+        }
+
+        $query = $this->Priorities->find('all')
+                ->where($conditions);
+
+        $priorities = $this->paginate($query, [
+            'limit' => 20,
+            'order' => ['priorities.id' => 'DESC']
+        ]);
         $this->set(compact('priorities'));
         $this->set('_serialize', ['priorities']);
     }
