@@ -59,8 +59,7 @@
                                 <th><?= $this->Paginator->sort('level', __('Nivel')) ?></th>
                                 <th><?= $this->Paginator->sort('color', __('color')) ?></th>
                                 <th><?= $this->Paginator->sort('published', __('Publicado')) ?></th>
-                                <th><?= $this->Paginator->sort('created', __('Creado')) ?></th>
-                                <th><?= $this->Paginator->sort('modified', __('Modificado')) ?></th>
+
                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
                             <tr class="hidden-xs">
@@ -83,8 +82,7 @@
                                     ]);
                                     ?>
                                 </td>
-                                <td><?php echo $this->Form->input('created', ['label' => false, 'value' => $params['created']]); ?></td>
-                                <td><?php echo $this->Form->input('modified', ['label' => false, 'value' => $params['modified']]); ?></td>
+
                                 <td class="actions text-right">
                                     <button type="submit" title="<?= __('Filtrar resultados') ?>" class="btn btn-sm btn-default" id="btnFilter"><i class="fa fa-filter"></i></button>
                                     <?php
@@ -111,8 +109,7 @@
                                 <td><?= $this->Number->format($priority->level) ?></td>
                                 <td><?= h($priority->color) ?></td>
                                 <td><?= ($priority->published)?__('Si'):__('No') ?></td>
-                                <td><?= h($priority->created) ?></td>
-                                <td><?= h($priority->modified) ?></td>
+
                                 <td class="actions text-right">
                                     <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $priority->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
                                     <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $priority->id], ['escape' => false, 'class' => 'btn btn-xs btn-warning', 'title' => __('Modificar')]) ?>
