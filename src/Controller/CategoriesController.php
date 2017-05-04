@@ -38,9 +38,9 @@ class CategoriesController extends AppController
         $query = $this->Categories->find('all')
                 ->where($conditions);
 
-        $category = $this->paginate($query, [
+        $categories = $this->paginate($query, [
             'limit' => 20,
-            'order' => ['categories.id' => 'DESC']
+            'order' => ['Categories.id' => 'DESC']
         ]);
 
         $this->set(compact('categories'));
