@@ -32,7 +32,7 @@
                         </tr>
                         <tr>
                             <th><?= __('Publicado') ?></th>
-                            <td><?= ($country->published == 'S')?'Si':'No' ?></td>
+                            <td><?= ($country->published == 'S') ? 'Si' : 'No' ?></td>
                         </tr>
                         <tr>
                             <th><?= __('Creado por') ?></th>
@@ -60,25 +60,26 @@
                 <?= $this->Form->create($country) ?>
                 <div class="box-body">
                     <?php if (!empty($country->cities)): ?>
-                    <table class="table table-striped">
-                        <tr>
-                            <th>#</th>
-                            <th><?= __('Nombre') ?></th>
-                            <th><?= __('Código') ?></th>
-                            <th><?= __('Publicado') ?></th>
-                        </tr>
-                        <?php $i = 0; foreach ($country->cities as $city): $i++; ?>
-                        <tr>
-                            <td><?= h($i) ?></td>
-                            <td><?= h($city->name) ?></td>
-                            <td><?= h($city->code) ?></td>
-                            <td><?= ($city->published == 1)?'Si':'No' ?></td>
-                        </tr>
+                        <table class="table table-striped">
+                            <tr>
+                                <th>#</th>
+                                <th><?= __('Nombre') ?></th>
+                                <th><?= __('Código') ?></th>
+                                <th><?= __('Publicado') ?></th>
+                            </tr>
+                            <?php $i = 0;
+                            foreach ($country->cities as $city): $i++; ?>
+                                <tr>
+                                    <td><?= h($i) ?></td>
+                                    <td><?= h($city->name) ?></td>
+                                    <td><?= h($city->code) ?></td>
+                                    <td><?= ($city->published == 1) ? 'Si' : 'No' ?></td>
+                                </tr>
                         <?php endforeach; ?>
-                    </table>
+                        </table>
                     <?php endif; ?>
                 </div>
-                
+
             </div>
         </div>
     </div>
