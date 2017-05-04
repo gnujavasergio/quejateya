@@ -53,7 +53,7 @@
                             <tr>
                                 <th style="width: 50px">#</th>
                                 <th><?= $this->Paginator->sort('name', __('Nombre')) ?></th>
-                                <th><?= $this->Paginator->sort('position', 'Posiciónn') ?></th>
+                                <th><?= $this->Paginator->sort('position', 'Posición') ?></th>
                                <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
