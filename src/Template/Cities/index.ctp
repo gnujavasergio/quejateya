@@ -4,6 +4,7 @@
             window.location = '<?php echo $this->Url->build(['controller' => 'cities', 'action' => 'index']); ?>?'
                     + 'name=' + $("#name").val()
                     + '&code=' + $("#code").val()
+                    + '&country=' + $("#country-id").val()
                     + '&published=' + $("#published").val();
         }
 
@@ -55,6 +56,7 @@
                                 <th style="width: 50px">#</th>
                                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                                 <th><?= $this->Paginator->sort('code', 'Código') ?></th>
+                                <th><?= $this->Paginator->sort('Countries.name', 'País') ?></th>
                                 <th><?= $this->Paginator->sort('published', 'Publicado') ?></th>
                                 <th class="actions text-center" style="width: 100px"><?= __('Acciones') ?></th>
                             </tr>
@@ -62,6 +64,18 @@
                                 <td></td>
                                 <td><?php echo $this->Form->input('name', ['label' => false, 'value' => $params['name']]); ?></td>
                                 <td><?php echo $this->Form->input('code', ['label' => false, 'value' => $params['code']]); ?></td>
+                                <td>
+                                    <?php
+                                    echo $this->Form->input('country_id', [
+                                        'label' => false,
+                                        'div' => false, 
+                                        'options' => $countries,
+                                        'class' => 'form-control select2',
+                                        'value' => $params['country'],
+                                        'empty' => __('Todos')
+                                    ]);
+                                    ?>
+                                </td>
                                 <td>
                                     <?php
                                     echo $this->Form->input('published', [
@@ -99,6 +113,7 @@ if ($cities) {
                                         <td><?= $this->Number->format($i) ?></td>
                                         <td><?= h($city->name) ?></td>
                                         <td><?= h($city->code) ?></td>
+                                        <td><?= h($city->country->name) ?></td>
                                         <td><?= ($city->published) ? __('Si') : __('No') ?></td>
                                         <td class="actions text-right">
         <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $city->id], ['escape' => false, 'class' => 'btn btn-xs btn-info', 'title' => __('Ver')]) ?>
