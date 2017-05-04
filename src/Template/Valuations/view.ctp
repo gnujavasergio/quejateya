@@ -51,7 +51,7 @@
                             <td><?= $this->Time->format($valuation->modified, 'dd/MM/Y HH:mm:ss') ?></td>
                         </tr>
                     </table>
-                </div>
+                </div>  
             </div>
             
         </div>
