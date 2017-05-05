@@ -67,7 +67,9 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
         
-        $this->viewBuilder()->theme('AdminLTE');
-        $this->set('theme', Configure::read('Theme'));
+        $this->viewBuilder()->setLayout('default2');
+        
+//        $this->viewBuilder()->theme('AdminLTE');
+//        $this->set('theme', Configure::read('Theme'));
     }
 }

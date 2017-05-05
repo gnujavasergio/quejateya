@@ -66,4 +66,15 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+    
+    public function home2() {
+        $this->loadModel('Categories');
+        $categories = $this->Categories->find('all', [
+            'fields' => ['name', 'hashtag'],
+            'conditions' => ['published' => true]
+        ]);
+//        echo debug($categories); exit;
+        $this->set(compact('categories'));
+        $this->set('_serialize', ['categories']);
+    }
 }
